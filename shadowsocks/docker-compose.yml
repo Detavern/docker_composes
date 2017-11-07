@@ -1,0 +1,11 @@
+version: '2.3'
+services:
+    ss-server:
+        image: 'mritd/shadowsocks'
+        container_name: ss-server
+        ports:
+            - 60000:6433
+        environment:
+            SS_MODULE: ss-server
+            SS_CONFIG: -s 0.0.0.0 -p 6443 -m aes-256-cfb -k ahTeixoh9aebohz2 --fast-open
+            KCP_FLAG: false
