@@ -1,0 +1,15 @@
+version: '2.3'
+services:
+    mongo:
+        image: 'mongo:latest'
+        container_name: mongo
+        command: mongod -f /etc/mongod.conf
+        ports:
+            - 27017:27017
+        volumes:
+            - ~/Docker/mongodb:/data/db
+            - ~/Docker/etc/mongod.conf:/etc/mongod.conf
+        restart: always
+        hostname: mongo
+        cpus: 0.5
+        mem_limit: 2048M
