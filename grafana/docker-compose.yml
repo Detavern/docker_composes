@@ -15,9 +15,9 @@ services:
         hostname: grafana
         cpus: 0.5
         mem_limit: 2048M
-    influxdb:
+    grafana-influx:
         image: 'influxdb:latest'
-        container_name: influxdb
+        container_name: grafana-influx
         ports:
             - 8086:8086
         volumes:
@@ -30,6 +30,6 @@ services:
             INFLUXDB_READ_USER: grafana
             INFLUXDB_READ_USER_PASSWORD: $INFLUXDB_USER_PASSWORD
         restart: always
-        hostname: influxdb
+        hostname: grafana-influx
         cpus: 0.5
         mem_limit: 2048M
