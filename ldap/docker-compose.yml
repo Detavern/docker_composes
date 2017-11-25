@@ -13,6 +13,8 @@ services:
             SLAPD_FULL_DOMAIN: $SLAPD_FULL_DOMAIN(dc=ldap,dc=example,dc=com)
             INITIAL_ADMIN_USER: $INITIAL_ADMIN_USER
             INITIAL_ADMIN_PASSWORD: $INITIAL_ADMIN_PASSWORD
+            SLAPD_ADDITIONAL_SCHEMAS: 'ppolicy,dyngroup'
+            SLAPD_ADDITIONAL_MODULES: 'memberof,ppolicy'
         restart: always
         hostname: ldap
     ldap-phpadmin:
