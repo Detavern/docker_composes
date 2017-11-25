@@ -1,7 +1,7 @@
 version: '2.3'
 services:
     grafana:
-        image: ' gitlab/gitlab-ce:latest'
+        image: 'gitlab/gitlab-ce:latest'
         container_name: gitlab
         ports:
             - '22:22'
