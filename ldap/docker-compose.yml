@@ -6,14 +6,13 @@ services:
         ports:
             - 389:389
         volumes:
-            - /data/ldifs:/var/tmp/ldifs-addons
+            - /data/ldap:/var/lib/ldap
         environment:
             SLAPD_PASSWORD: $SLAPD_PASSWORD
             SLAPD_DOMAIN: $SLAPD_DOMAIN(ldap.example.com)
             SLAPD_FULL_DOMAIN: $SLAPD_FULL_DOMAIN(dc=ldap,dc=example,dc=com)
             INITIAL_ADMIN_USER: $INITIAL_ADMIN_USER
             INITIAL_ADMIN_PASSWORD: $INITIAL_ADMIN_PASSWORD
-            SLAPD_LOAD_LDIFS: ',/var/tmp/ldifs-addons'
         restart: always
         hostname: ldap
     ldap-phpadmin:
