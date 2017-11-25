@@ -5,15 +5,13 @@ services:
         container_name: ldap
         ports:
             - 389:389
-        volumes:
-            - /data/ldap:/var/lib/ldap
         environment:
             SLAPD_PASSWORD: $SLAPD_PASSWORD
-            SLAPD_DOMAIN: $SLAPD_DOMAIN(ldap.example.com)
-            SLAPD_FULL_DOMAIN: $SLAPD_FULL_DOMAIN(dc=ldap,dc=example,dc=com)
+            SLAPD_DOMAIN: $SLAPD_DOMAIN(example.com)
+            SLAPD_FULL_DOMAIN: $SLAPD_FULL_DOMAIN(dc=example,dc=com)
             INITIAL_ADMIN_USER: $INITIAL_ADMIN_USER
             INITIAL_ADMIN_PASSWORD: $INITIAL_ADMIN_PASSWORD
-            SLAPD_ADDITIONAL_SCHEMAS: 'ppolicy,dyngroup'
+            SLAPD_ADDITIONAL_SCHEMAS: 'collective,openldap,ppolicy,dyngroup'
             SLAPD_ADDITIONAL_MODULES: 'memberof,ppolicy'
         restart: always
         hostname: ldap
@@ -26,7 +24,7 @@ services:
             LDAP_SERVER_NAME: $LDAP_SERVER_NAME
             LDAP_SERVER_HOST: 'ldap'
             LDAP_SERVER_PORT: '389'
-            LDAP_SERVER_BASE_DN: $LDAP_SERVER_BASE_DN(dc=ldap,dc=example,dc=com)
-            LDAP_SERVER_BIND_ID: $LDAP_SERVER_BIND_ID(cn=admin,dc=ldap,dc=example,dc=com)
+            LDAP_SERVER_BASE_DN: $LDAP_SERVER_BASE_DN(dc=example,dc=com)
+            LDAP_SERVER_BIND_ID: $LDAP_SERVER_BIND_ID(cn=admin,dc=example,dc=com)
         restart: always
         
