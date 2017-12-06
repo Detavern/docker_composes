@@ -11,6 +11,6 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
         restart: always
-        hostname: mongo
+        hostname: mysql
         cpus: 0.5
         mem_limit: 2048M
