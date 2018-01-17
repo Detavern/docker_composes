@@ -1,6 +1,7 @@
 # Custom Rules
 \#*
 *.override.yml
+base.*.yml
 docker-compose.*.yml
 
 # Linux
