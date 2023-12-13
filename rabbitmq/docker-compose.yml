@@ -1,17 +1,14 @@
-version: '2.3'
+version: "3"
 services:
-    rabbitmq:
-        image: 'rabbitmq:3-management'
-        container_name: rabbitmq
-        ports:
-            - 5672:5672
-            - 15672:15672
-        volumes:
-            - ~/Docker/rabbitmq:/var/lib/rabbitmq
-        restart: always
-        hostname: rabbitmq
-        cpus: 0.2
-        mem_limit: 512M
-        environment:
-            RABBITMQ_DEFAULT_USER: guest
-            RABBITMQ_DEFAULT_PASS: guest
+  rabbitmq:
+    image: rabbitmq:3-management
+    restart: always
+    container_name: rabbitmq
+    ports:
+      - ${RABBITMQ_PORT:-5672}:5672
+      - ${RABBITMQ_MGMT_PORT:-15672}:15672
+    volumes:
+      - ${RABBITMQ_DATA_DIR:-/data/rabbitmq}:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_ROOT_USERNAME:-root}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_ROOT_PASSWORD:?error}
