@@ -5,13 +5,13 @@ services:
     command: --default-authentication-plugin=mysql_native_password  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     container_name: mysql
     restart: unless-stopped
+    hostname: ${MYSQL_HOSTNAME:-mysql}
     ports:
       - ${MYSQL_PORT:-3306}:3306
+    volumes:
+      - ${MYSQL_DATA_DIR:-/data/mysql}:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?error}
       MYSQL_DATABASE: ${MYSQL_DATABASE:?error}
       MYSQL_USER: ${MYSQL_USER:?error}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:?error}
-    hostname: ${MYSQL_HOSTNAME:-mysql}
-    volumes:
-      - ${MYSQL_DATA_DIR:-/data/mysql}:/var/lib/mysql
